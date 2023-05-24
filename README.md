@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a way to set up SSL fast for localhost in a Ruby on Rails 7 app.
 
-Things you may want to cover:
+The first command is required. Running the server is optional if you don't include the change to the config/puma.rb file. With the change to the puma file, you can just run a rails s and visit the port in your puma file (Defaulted to 3001) to see your https app. EX: By default it's set to 3001 in the puma file, so visiting https://localhost:3001 will be how you can use SSL.
 
-* Ruby version
+# Create SSL Cert
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+openssl req -x509 -sha256 -nodes -newkey rsa:2048 -keyout localhost.key -out localhost.crt -subj "/CN=localhost" -days 365
